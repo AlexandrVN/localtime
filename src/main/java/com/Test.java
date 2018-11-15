@@ -12,17 +12,28 @@ Good night, World! в 23:00 - 06:00
  */
 package com;
 
+import org.apache.log4j.Logger;
+
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+
 public class Test {
+
+    // Инициализация логера
+    private static final Logger log = Logger.getLogger(Test.class.getName());
+
+    //private static Logger log = Logger.getLogger(Test.class.getName());
 
     public static void main(String[] args) {
 
+        log.info("Test message!");
+
         Date date = new Date();
         int hour = date.getHours();
+        log.info("Received current time: " + hour + " hours");
         String ave;
         if (hour>=6 && hour<9){
             ave = "ave1";
