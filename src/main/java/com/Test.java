@@ -12,6 +12,7 @@ Good night, World! в 23:00 - 06:00
  */
 package com;
 
+import java.io.UnsupportedEncodingException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -25,17 +26,8 @@ public class Test {
 
     public static void main(String[] args) {
 
-        System.out.println(Locale.getDefault());
 
-        Locale current = Locale.getDefault();
-        Locale myLocale = new Locale("ru", "UA");
 
-        Locale currentLocale = new Locale("by");
-        ResourceBundle rb = ResourceBundle.getBundle("LabelsBundle", currentLocale);
-
-        String st = rb.getString("h1");
-
-        System.out.println(st);
 
         //LocalDateTime now = LocalDateTime.now();
 
@@ -52,13 +44,13 @@ public class Test {
 
         Date date = new Date();
         int hour = date.getHours();
-        String message;
 
+        String time;
         switch (hour){
             case 6:
             case 7:
             case 8:
-                message = "Good morning, World!";
+                time = "h1";
                 break;
             case 9:
             case 10:
@@ -70,20 +62,31 @@ public class Test {
             case 16:
             case 17:
             case 18:
-                message = "Good day, World!";
+                time = "h2";
                 break;
             case 19:
             case 20:
             case 21:
             case 22:
-                message = "Good evening, World!";
+                time = "h3";
                 break;
             default:
-                message = "Good night, World!";
+                time = "h4";
                 break;
         }
 
-        System.out.println(message);
+        Locale currentLocale = new Locale("en", "US");
+        ResourceBundle rb = ResourceBundle.getBundle("LabelsBundle", currentLocale);
+
+        try {
+            String st = rb.getString(time);
+            String s1 = new String(st.getBytes("ISO-8859-1"),"UTF-8");
+            System.out.println(s1);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        //System.out.println(message);
 
 
     }
