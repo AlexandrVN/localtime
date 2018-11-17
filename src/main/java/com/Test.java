@@ -25,8 +25,6 @@ public class Test {
     // Инициализация логера
     private static final Logger log = Logger.getLogger(Test.class.getName());
 
-    //private static Logger log = Logger.getLogger(Test.class.getName());
-
     public static void main(String[] args) {
 
         log.info("Test message!");
@@ -44,17 +42,20 @@ public class Test {
         } else {
             ave = "ave4";
         }
+        log.info("Received a greeting of the day: " + ave);
 
         //Locale currentLocale = new Locale("de");
         Locale currentLocale = Locale.getDefault();
+        log.info("Received current location: " + currentLocale);
         ResourceBundle rb = ResourceBundle.getBundle("LabelsBundle", currentLocale);
         try {
             String st = rb.getString(ave);
             String s1 = new String(st.getBytes("ISO-8859-1"),"UTF-8");
             System.out.println(s1);
+            log.info("Успешный вывод приветствия: " + s1);
         } catch (UnsupportedEncodingException e) {
+            log.error("Вывести приветствие не удалась");
             e.printStackTrace();
         }
-
     }
 }
