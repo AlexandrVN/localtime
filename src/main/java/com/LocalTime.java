@@ -1,14 +1,11 @@
 /*
-Написать консольное приложение на java, с использованием maven.
-Приложение должно выводить на экран приветственное сообщение, в зависимости от текущего
-времени суток.
-Good morning, World! в 06:00 - 09:00
-Good day, World! в 09:00 - 19:00
-Good evening, World! в 19:00 - 23:00
-Good night, World! в 23:00 - 06:00
-Код должен содержать все возможные юнит-тесты и создавать читабельный лог файл.
-Выводящиеся на консоль сообщения должны быть получены из message resource и зависеть от
-системной локали пользователя. Сделать перевод на русский язык.
+В зависимости от текущего времени суток, вывести в консоль приветственное сообщение:
+06:00 - 09:00 - Good morning, World!
+09:00 - 19:00 - Good day, World!
+19:00 - 23:00 - Good evening, World!
+23:00 - 06:00 - Good night, World!
+Язык сообщения должны зависеть от системной локали пользователя.
+Логи вывести в отдельный файл. Создать юнит-тесты.
  */
 package com;
 
@@ -20,14 +17,14 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 
-public class Test {
+public class LocalTime {
 
     // Initialization of logger
-    private static final Logger log = Logger.getLogger(Test.class.getName());
+    private static final Logger log = Logger.getLogger(LocalTime.class.getName());
 
     public static void main(String[] args) {
 
-        log.info("Test message!");
+        log.info("LocalTime message!");
 
         Date date = new Date();
         int hour = date.getHours();
